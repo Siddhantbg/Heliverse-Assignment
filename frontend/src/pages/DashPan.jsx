@@ -168,7 +168,7 @@ function PantryDashboard() {
 
       {/* Meal Task Management */}
       <div>
-        <h3 className="text-xl font-semibold mb-4">Manage Meal Tasks</h3>
+            <br />
         <form onSubmit={handleTaskFormSubmit} className="mb-6">
           <div className="flex flex-col gap-4">
             <select

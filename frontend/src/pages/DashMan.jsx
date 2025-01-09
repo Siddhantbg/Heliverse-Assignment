@@ -178,7 +178,7 @@ function Dashboard() {
 
         {activeTab === "meals" && (
           <div>
-            <h3 className="text-xl font-bold mb-4">Meal Preparation</h3>
+              <br />
             <form onSubmit={handleMealFormSubmit} className="mb-6">
               <div className="flex flex-col gap-4">
                 <input

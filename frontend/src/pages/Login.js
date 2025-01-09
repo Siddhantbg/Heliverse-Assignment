@@ -26,7 +26,7 @@ function Login() {
             return handleError('Email and password are required');
         }
         try {
-            const url =`https://heliverse-assignment-gules.vercel.app/login`
+            const url =`https://heliverse-assignment-gules.vercel.app/auth/login`
             // const url = `http://localhost:8080/auth/login`;
             const response = await fetch(url, {
                 method: "POST",

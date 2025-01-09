@@ -25,7 +25,7 @@ function Signup() {
             return handleError('Name, email, and password are required')
         }
         try {
-            const url =`https://heliverse-assignment-9mub.vercel.app/signup`
+            const url =`https://heliverse-assignment-gules.vercel.app/signup`
             // const url = `http://localhost:8080/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",

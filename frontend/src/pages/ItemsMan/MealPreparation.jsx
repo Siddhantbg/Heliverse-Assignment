@@ -104,7 +104,9 @@ function MealPreparation() {
 
   return (
     <div>
-        <br />
+        <br /> <br />
+        <h1 className="text-2xl font-semibold mb-6">Meal Preparation</h1>
+
       <form onSubmit={handleSave} className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h3 className="text-lg font-medium mb-4">
           {form.id ? "Edit Meal Plan" : "Add New Meal Plan"}

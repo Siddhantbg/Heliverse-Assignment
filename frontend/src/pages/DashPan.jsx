@@ -104,7 +104,6 @@ function PantryDashboard() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-semibold mb-6">Pantry Dashboard</h1>
-      <h1 className="text-2xl font-semibold mb-6">Pantry Dashboard</h1>
 {/* Pantry Staff Management */}
 <div className="mb-6">
   <h3 className="text-xl font-semibold mb-4">Manage Pantry Staff</h3>

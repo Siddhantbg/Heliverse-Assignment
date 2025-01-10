@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("patients");
-  const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
 
   const [patients, setPatients] = useState([]);
   const [patientForm, setPatientForm] = useState({
@@ -23,17 +21,25 @@ function Dashboard() {
     deliveryStatus: "Not Delivered",
   });
 
-  useEffect(() => {
+    const navigate = useNavigate();
 
-    const user = JSON.parse(localStorage.getItem("user")); 
-    if (user && user.isLoggedIn) {
-      setLoggedIn(true);
-    } else {
-      navigate("/login"); 
-    }
-  }, [navigate]);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+    
+        if (!token) {
+          // Redirect the user if no token is found
+          navigate("/login", { state: { message: "Please log in to access this page." } });
+        } else {
+          // Optionally validate token via API or decode it here
+          const isValid = true; // Replace this with actual validation
+          if (!isValid) {
+            localStorage.removeItem("token");
+            navigate("/login", { state: { message: "Session expired. Please log in again." } });
+          }
+        }
+      }, [navigate]);
 
-
+  
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients")) || [];
     const storedMeals = JSON.parse(localStorage.getItem("mealTasks")) || [];
@@ -91,9 +97,7 @@ function Dashboard() {
   const handleDeleteMealTask = (id) => {
     setMealTasks((prev) => prev.filter((task) => task.id !== id));
   };
-  if (!loggedIn) {
-    return null; 
-  }
+
   return (
     <div className="flex">
       {/* Sidebar */}

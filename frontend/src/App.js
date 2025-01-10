@@ -14,10 +14,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const location = useLocation();
 
-  // Conditionally hide the Navbar for specific routes
-  const hideNavbar = location.pathname === '/login' || location.pathname === '/signup';
+  const hideNavbar = location.pathname === '/DashMan' || location.pathname === '/DashPan'|| location.pathname === '/home';
 
-  // PrivateRoute component for authenticated routes
   const PrivateRoute = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />;
   };
@@ -25,15 +23,19 @@ function App() {
   return (
     <div className="App">
       <RefrshHandler setIsAuthenticated={setIsAuthenticated} />
-      {!hideNavbar && <Navbar />} {/* Render Navbar conditionally */}
+      {/* Conditionally render Navbar */}
+      {!hideNavbar && <Navbar />} 
+
       <Routes>
         <Route path="/" element={<Navigate to="/HomePage" />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        
+        {/* Protected Routes */}
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
-        <Route path="/DashMan" element={<DashMan />} />
-        <Route path="/DashPan" element={<DashPan />} />
+        <Route path="/DashMan" element={<PrivateRoute element={<DashMan />} />} />
+        <Route path="/DashPan" element={<PrivateRoute element={<DashPan />} />} />
       </Routes>
       <Footer />
     </div>

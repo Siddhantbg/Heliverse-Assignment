@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 
 function PantryDashboard() {
   const [pantryStaff, setPantryStaff] = useState([]);
@@ -18,17 +18,16 @@ function PantryDashboard() {
     deliveryStatus: "Not Delivered",
   });
 
+  
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      // Redirect the user if no token is found
       navigate("/login", { state: { message: "Please log in to access this page." } });
     } else {
-      // Optionally validate token via API or decode it here
-      const isValid = true; // Replace this with actual validation
+      const isValid = true; 
       if (!isValid) {
         localStorage.removeItem("token");
         navigate("/login", { state: { message: "Session expired. Please log in again." } });

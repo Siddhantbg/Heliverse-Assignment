@@ -104,7 +104,6 @@ function MealPreparation() {
 
   return (
     <div>
-        <br /> <br />
         <h1 className="text-2xl font-semibold mb-6">Meal Preparation</h1>
 
       <form onSubmit={handleSave} className="bg-white p-6 rounded-lg shadow-md mb-6">

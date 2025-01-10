@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("patients");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const [patients, setPatients] = useState([]);
   const [patientForm, setPatientForm] = useState({
@@ -19,6 +22,17 @@ function Dashboard() {
     preparationStatus: "Not Started",
     deliveryStatus: "Not Delivered",
   });
+
+  useEffect(() => {
+
+    const user = JSON.parse(localStorage.getItem("user")); 
+    if (user && user.isLoggedIn) {
+      setLoggedIn(true);
+    } else {
+      navigate("/login"); 
+    }
+  }, [navigate]);
+
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients")) || [];
@@ -77,7 +91,9 @@ function Dashboard() {
   const handleDeleteMealTask = (id) => {
     setMealTasks((prev) => prev.filter((task) => task.id !== id));
   };
-
+  if (!loggedIn) {
+    return null; 
+  }
   return (
     <div className="flex">
       {/* Sidebar */}

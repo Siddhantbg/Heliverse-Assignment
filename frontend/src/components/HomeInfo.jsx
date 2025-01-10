@@ -10,7 +10,7 @@ const HomeInfo = ({ currentStage }) => {
         <span className='font-semibold mx-2 text-white'>Hospital Food Delivery Management</span>
         👋
         <br />
-        built by Siddhant
+        built by Siddhant (drag the plane to SignIn)
       </h1>
     );
 

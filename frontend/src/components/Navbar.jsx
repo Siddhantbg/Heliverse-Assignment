@@ -6,9 +6,9 @@ const Navbar = () => {
     <header className='header'>
       <NavLink
         to="/"
-        className="bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-white font-bold text-xl px-4 py-2 rounded-lg shadow-lg hover:opacity-90"
+        className="font-bold w-20 px-4 py-2 rounded-lg shadow-lg "
       >
-        Hospital Food Delivery Management
+        <img src="\home.webp" alt="logo"/>
       </NavLink>
 
       <nav className='flex text-lg gap-7 font-medium'>
